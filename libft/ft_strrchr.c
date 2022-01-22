@@ -6,11 +6,11 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 17:22:04 by cvine             #+#    #+#             */
-/*   Updated: 2021/10/20 17:32:37 by cvine            ###   ########.fr       */
+/*   Updated: 2022/01/14 19:57:59 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

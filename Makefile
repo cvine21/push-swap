@@ -9,13 +9,11 @@ SRCS		=	./srcs/ab_action.c		./srcs/checker_utils.c\
 				./srcs/calc_ops.c		./srcs/push.c\
 				./srcs/rotate.c			./srcs/sort.c\
 				./srcs/stack_ops.c		./srcs/swap.c\
-				./srcs/utils.c			./srcs/fill_stack.c\
+				./srcs/fill_stack.c\
 
 SRCS_PS		=	./srcs/push_swap.c
 
-SRCS_B 		= 	./get_next_line/get_next_line.c\
-				./get_next_line/get_next_line_utils.c\
-				./srcs/checker.c
+SRCS_B 		=	./srcs/checker.c
 
 HEADER		=	./includes/push_swap.h
 

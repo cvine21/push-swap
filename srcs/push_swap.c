@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 12:52:53 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/06 11:32:26 by marvin           ###   ########.fr       */
+/*   Updated: 2022/01/14 19:40:29 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 	t_ops	*ops;
-	
-	// return (0);
+
 	stack = NULL;
 	ops = NULL;
 	if (argc == 1)
@@ -34,25 +33,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		minisort(stack);
-	// printf("%d\n", stack->markup_start->val);
-	// while(--argc)
-	// {
-	// 	if (stack->a->head)
-	// 	{
-	// 		printf("%d(%d) | ", stack->a->head->val, stack->a->head->flag);
-	// 		stack->a->head = stack->a->head->next;
-	// 	}
-	// 	else
-	// 		printf("     | ");
-	// 	if (stack->b->head)
-	// 	{
-	// 		printf("%d\n", stack->b->head->val);
-	// 		stack->b->head = stack->b->head->next;
-	// 	}
-	// 	else
-	// 		printf("\n");
-	// }
-	// printf("----- -----\n  a     b\n");
-	stclear(stack);
+	clear(stack, ops);
 	return (0);
 }

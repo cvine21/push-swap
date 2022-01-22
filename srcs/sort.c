@@ -3,14 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 10:42:37 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/03 22:33:52 by marvin           ###   ########.fr       */
+/*   Updated: 2022/01/14 12:30:34 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	quicksort_array(int *array, int left, int right)
+{
+	int	pivot;
+	int	lower;
+	int	greater;
+
+	if (left < right)
+	{
+		lower = left;
+		greater = right;
+		pivot = left;
+		while (lower < greater)
+		{
+			while (array[lower] <= array[pivot] && lower < right)
+				lower++;
+			while (array[greater] > array[pivot])
+				greater--;
+			if (lower < greater)
+				ft_swap(&array[lower], &array[greater]);
+		}
+		ft_swap(&array[pivot], &array[greater]);
+		quicksort_array(array, left, greater - 1);
+		quicksort_array(array, greater + 1, right);
+	}
+}
 
 int	opt_direction(t_stack *stack)
 {

@@ -6,12 +6,14 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 17:37:07 by cvine             #+#    #+#             */
-/*   Updated: 2021/10/20 18:02:27 by cvine            ###   ########.fr       */
+/*   Updated: 2022/01/15 11:09:57 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFFER_SIZE 2048
+# include "get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -20,6 +22,13 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+char	*find_newline(const char *s);
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t	dstsize);
+char	*ft_strdup(const char *s1);
+char	*gnl_strjoin(char const *s1, char const *s2);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

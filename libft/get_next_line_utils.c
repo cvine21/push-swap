@@ -6,11 +6,11 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 16:13:47 by cvine             #+#    #+#             */
-/*   Updated: 2021/11/12 18:03:28 by cvine            ###   ########.fr       */
+/*   Updated: 2022/01/14 20:13:39 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./includes/get_next_line.h"
 
 char	*find_newline(const char *s)
 {

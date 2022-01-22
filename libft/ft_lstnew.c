@@ -6,11 +6,11 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 10:26:57 by cvine             #+#    #+#             */
-/*   Updated: 2021/10/20 19:27:34 by cvine            ###   ########.fr       */
+/*   Updated: 2022/01/14 19:57:59 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 t_list	*ft_lstnew(void *content)
 {

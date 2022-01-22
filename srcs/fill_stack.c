@@ -6,7 +6,7 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 17:05:08 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/06 11:01:46 by cvine            ###   ########.fr       */
+/*   Updated: 2022/01/14 16:36:52 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	assign_index(t_lst	*lst, int *array, int num)
 
 	i = 0;
 	el = lst->head;
-	quicksort(array, 0, num - 2);
+	quicksort_array(array, 0, num - 2);
 	check_for_dup(num - 1, array);
 	while (el)
 	{
@@ -33,7 +33,7 @@ void	assign_index(t_lst	*lst, int *array, int num)
 	}
 }
 
-int	ps_atoi(char *arg, int *array)
+int	ps_atoi(char *arg)
 {
 	long	rep;
 	int		minus;
@@ -41,7 +41,7 @@ int	ps_atoi(char *arg, int *array)
 	rep = 0;
 	minus = 1;
 	if (!*arg)
-		exit(0);
+		error();
 	while ((9 <= *arg && *arg <= 13) || *arg == 32)
 		arg++;
 	if (*arg == '-')
@@ -53,14 +53,12 @@ int	ps_atoi(char *arg, int *array)
 		while (ft_isdigit(*arg))
 		{
 			rep = rep * 10 + (*arg - 48);
-			check_for_int(rep, minus, array);
+			check_for_int(rep, minus);
 			arg++;
 		}
 	}
-	else
-		error(array);
-	if (!ft_isdigit(*arg) && *arg != '\0')
-		error(array);
+	if (*arg != '\0' || (!*arg && !ft_isdigit(*(--arg))))
+		error();
 	return (rep * minus);
 }
 
@@ -71,13 +69,10 @@ int	*get_array(int *array, char **argv, int argc)
 	i = 0;
 	array = malloc(sizeof(int) * (argc - 1));
 	if (!array)
-	{
-		ft_putendl_fd("Error", 1);
-		exit(1);
-	}
+		error();
 	while (--argc)
 	{
-		array[i] = ps_atoi(argv[i + 1], array);
+		array[i] = ps_atoi(argv[i + 1]);
 		i++;
 	}
 	return (array);

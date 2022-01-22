@@ -6,11 +6,11 @@
 /*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:55:30 by cvine             #+#    #+#             */
-/*   Updated: 2021/10/21 12:32:34 by cvine            ###   ########.fr       */
+/*   Updated: 2022/01/14 19:57:59 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

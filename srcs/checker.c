@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 17:10:18 by marvin            #+#    #+#             */
-/*   Updated: 2022/01/02 17:10:18 by marvin           ###   ########.fr       */
+/*   Created: 2022/01/12 15:05:29 by cvine             #+#    #+#             */
+/*   Updated: 2022/01/12 15:05:29 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 void	ops(t_stack *stack, char *line)
 {
-	if (!ft_strncmp("sa", line, 2))
+	if (!ft_strncmp("sa", line, 2) && (!line[2] || line[2] == '\n'))
 		swap(stack->a, "sa", 0);
-	else if (!ft_strncmp("sb", line, 2))
+	else if (!ft_strncmp("sb", line, 2) && (!line[2] || line[2] == '\n'))
 		swap(stack->b, "sb", 0);
-	else if (!ft_strncmp("ss", line, 2))
+	else if (!ft_strncmp("ss", line, 2) && (!line[2] || line[2] == '\n'))
 		ss(stack, 0);
-	else if (!ft_strncmp("ra", line, 2))
+	else if (!ft_strncmp("ra", line, 2) && (!line[2] || line[2] == '\n'))
 		rotate(stack->a, "ra", 0);
-	else if (!ft_strncmp("rb", line, 2))
+	else if (!ft_strncmp("rb", line, 2) && (!line[2] || line[2] == '\n'))
 		rotate(stack->b, "rb", 0);
-	else if (!ft_strncmp("rra", line, 3))
+	else if (!ft_strncmp("rra", line, 3) && (!line[3] || line[3] == '\n'))
 		rrotate(stack->a, "rra", 0);
-	else if (!ft_strncmp("rrb", line, 3))
+	else if (!ft_strncmp("rrb", line, 3) && (!line[3] || line[3] == '\n'))
 		rrotate(stack->b, "rrb", 0);
-	else if (!ft_strncmp("rr", line, 2))
+	else if (!ft_strncmp("rr", line, 2) && (!line[2] || line[2] == '\n'))
 		rr(stack, 0);
-	else if (!ft_strncmp("rrr", line, 3))
+	else if (!ft_strncmp("rrr", line, 3) && (!line[3] || line[3] == '\n'))
 		rrr(stack, 0);
-	else if (!ft_strncmp("pa", line, 2))
+	else if (!ft_strncmp("pa", line, 2) && (!line[2] || line[2] == '\n'))
 		push(stack->b, stack->a, "pa", 0);
-	else if (!ft_strncmp("pb", line, 2))
+	else if (!ft_strncmp("pb", line, 2) && (!line[2] || line[2] == '\n'))
 		push(stack->a, stack->b, "pb", 0);
+	else
+		error();
 }
 
 void	checker(t_stack *stack)
@@ -49,13 +51,13 @@ void	checker(t_stack *stack)
 		free(line);
 		line = get_next_line(0);
 	}
-	if (is_sorted(stack) && !stack->b->head)
+	if (is_sorted(stack, stack->a->head) && !stack->b->head)
 		ft_putendl_fd(GREEN_OK, 1);
 	else
 		ft_putendl_fd(RED_KO, 1);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 
@@ -64,31 +66,6 @@ int main(int argc, char **argv)
 	stack = create_stacks();
 	fill_stack_a(stack, argc, argv);
 	checker(stack);
-	stclear(stack);
+	clear(stack, NULL);
 	return (0);
 }
-
-// int		num;
-// t_elem	*tmp_a;
-// t_elem	*tmp_b;
-// num = argc;
-// tmp_a = stack->a->head;
-// tmp_b = stack->b->head;
-// while(--num)
-// {
-// 	if (tmp_a)
-// 	{
-// 		printf("%d | ", tmp_a->val);
-// 		tmp_a = tmp_a->next;
-// 	}
-// 	else
-// 		printf("     | ");
-// 	if (tmp_b)
-// 	{
-// 		printf("%d\n", tmp_b->val);
-// 		tmp_b = tmp_b->next;
-// 	}
-// 	else
-// 		printf("\n");
-// }
-// printf("----- -----\n  a     b\n");

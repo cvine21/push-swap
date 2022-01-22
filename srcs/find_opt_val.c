@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   b_ops.c                                            :+:      :+:    :+:   */
+/*   find_opt_val.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 17:23:32 by marvin            #+#    #+#             */
-/*   Updated: 2021/12/22 17:23:32 by marvin           ###   ########.fr       */
+/*   Created: 2022/01/14 16:54:31 by cvine             #+#    #+#             */
+/*   Updated: 2022/01/14 16:54:31 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_ops	*create_t_ops(void)
 
 	new = (t_ops *)malloc(sizeof(t_ops));
 	if (!new)
-	{
-		ft_putendl_fd("Error", 1);
-		exit(1);
-	}
+		error();
 	return (new);
 }
 
@@ -46,6 +43,8 @@ void	same_time_ops(t_ops *ops, int *least_amount)
 	int	sum_1;
 	int	sum_2;
 
+	sum_1 = 0;
+	sum_2 = 0;
 	if (!ops->ra && ops->rra)
 	{
 		sum_1 = ops->rra + ops->rb;

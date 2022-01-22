@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   markup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 10:45:55 by marvin            #+#    #+#             */
-/*   Updated: 2021/12/20 10:45:55 by marvin           ###   ########.fr       */
+/*   Created: 2022/01/14 16:54:58 by cvine             #+#    #+#             */
+/*   Updated: 2022/01/14 16:54:58 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,18 @@ void	compare(t_stack *stack, t_elem *markup_start, size_t *current)
 	size_t	im_res;
 
 	vm_res = val_markup(stack->a, markup_start);
-	if (vm_res > stack->keep_in_a)
+	if (vm_res >= stack->keep_in_a)
 		stack->keep_in_a = vm_res;
 	im_res = index_markup(stack->a, markup_start);
-	if (im_res > stack->keep_in_a)
+	if (im_res > vm_res || im_res > stack->keep_in_a)
 		stack->keep_in_a = im_res;
 	else
 		stack->keep_in_a = val_markup(stack->a, markup_start);
-	if (stack->keep_in_a > *current)
+	if (stack->keep_in_a >= *current)
 	{
 		*current = stack->keep_in_a;
 		stack->markup_start = markup_start;
 	}
-	else if (*current == stack->keep_in_a && (!stack->markup_start
-			|| markup_start->val < stack->markup_start->val))
-		stack->markup_start = markup_start;
 }
 
 void	markup(t_stack *stack)

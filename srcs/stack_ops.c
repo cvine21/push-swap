@@ -18,10 +18,7 @@ t_lst	*create_dbl_lst(void)
 
 	new = (t_lst *)malloc(sizeof(t_lst));
 	if (!new)
-	{
-		ft_putendl_fd("Error", 1);
-		exit(1);
-	}
+		error();
 	new->size = 0;
 	new->head = NULL;
 	new->tail = NULL;
@@ -34,10 +31,7 @@ t_stack	*create_stacks(void)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
-	{
-		ft_putendl_fd("Error", 1);
-		exit(1);
-	}
+		error();
 	new->a = create_dbl_lst();
 	new->b = create_dbl_lst();
 	new->keep_in_a = 0;
@@ -50,10 +44,7 @@ void	lstadd_front(t_lst *lst, int val)
 
 	new = (t_elem *)malloc(sizeof(t_elem));
 	if (!new)
-	{
-		ft_putendl_fd("Error", 1);
-		exit(1);
-	}
+		error();
 	new->val = val;
 	new->next = lst->head;
 	new->prev = NULL;
@@ -71,10 +62,7 @@ int	pop(t_lst *lst)
 	t_elem	*ptr;
 
 	if (!(lst->head))
-	{
-		ft_putendl_fd("Error", 1);
-		exit(1);
-	}
+		error();
 	ptr = lst->head;
 	lst->head = lst->head->next;
 	if (lst->head)
@@ -87,7 +75,7 @@ int	pop(t_lst *lst)
 	return (pop_val);
 }
 
-void	stclear(t_stack *stack)
+void	clear(t_stack *stack, t_ops *ops)
 {
 	t_elem	*a_ptr;
 	t_elem	*b_ptr;
@@ -111,4 +99,6 @@ void	stclear(t_stack *stack)
 	free(stack->a);
 	free(stack->b);
 	free(stack);
+	if (ops)
+		free(ops);
 }

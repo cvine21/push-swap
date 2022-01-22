@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cvine <cvine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 12:45:31 by cvine             #+#    #+#             */
-/*   Updated: 2022/01/03 22:37:05 by marvin           ###   ########.fr       */
+/*   Updated: 2022/01/11 18:50:23 by cvine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 void	rotate(t_lst *lst, char *oper, int fd)
 {
-	t_elem	*tmp;
-
 	if (!lst || !(lst->head) || !(lst->head->next))
 		return ;
-	tmp = lst->head;
-	lst->head = tmp->next;
-	lst->tail->next = tmp;
-	tmp->prev = lst->tail;
-	lst->tail = tmp;
+	lst->tail->next = lst->head;
+	lst->head->prev = lst->tail;
+	lst->tail = lst->tail->next;
+	lst->head = lst->head->next;
 	lst->head->prev = NULL;
-	tmp->next = NULL;
+	lst->tail->next = NULL;
 	if (oper[1] != 'r' && fd)
 		ft_putendl_fd(oper, fd);
 }
